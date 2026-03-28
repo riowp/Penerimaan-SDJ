@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F8">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="12dp">
+
+        <!-- Range filter -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="10dp"
+            app:cardCornerRadius="10dp" app:cardElevation="3dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="12dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="📊 Grafik Tonnase Harian" android:textStyle="bold"
+                    android:textColor="#1A237E" android:textSize="15sp" android:layout_marginBottom="10dp" />
+                <Spinner android:id="@+id/spinnerRange"
+                    android:layout_width="match_parent" android:layout_height="56dp"
+                    android:paddingTop="4dp" android:paddingBottom="4dp"
+                    android:background="@drawable/spinner_bg" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bar Chart -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="10dp"
+            app:cardCornerRadius="10dp" app:cardElevation="3dp">
+            <com.ticketscanner.app.views.BarChartView
+                android:id="@+id/barChart"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:padding="8dp" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Stats Cards -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="10dp">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp"
+                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_marginEnd="5dp" app:cardCornerRadius="8dp"
+                app:cardElevation="2dp" app:cardBackgroundColor="#1B5E20">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="TOTAL" android:textColor="#A5D6A7" android:textSize="10sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvGrandTotal" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:text="0.00 Ton"
+                        android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp"
+                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_marginStart="5dp" app:cardCornerRadius="8dp"
+                app:cardElevation="2dp" app:cardBackgroundColor="#0D47A1">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="RATA-RATA/HARI" android:textColor="#BBDEFB" android:textSize="10sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvAvgPerDay" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:text="0.00 Ton/hari"
+                        android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp"
+                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_marginEnd="5dp" app:cardCornerRadius="8dp"
+                app:cardElevation="2dp" app:cardBackgroundColor="#E3F2FD">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="SHIFT 1" android:textColor="#1565C0" android:textSize="10sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvShift1Total" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:text="0.00 Ton"
+                        android:textColor="#0D47A1" android:textSize="15sp" android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp"
+                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_marginStart="5dp" app:cardCornerRadius="8dp"
+                app:cardElevation="2dp" app:cardBackgroundColor="#FFF3E0">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="SHIFT 2" android:textColor="#E65100" android:textSize="10sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvShift2Total" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:text="0.00 Ton"
+                        android:textColor="#BF360C" android:textSize="15sp" android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

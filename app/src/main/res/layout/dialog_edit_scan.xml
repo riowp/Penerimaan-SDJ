@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!-- Tonnase -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Tonnage Net (Ton)" android:layout_marginBottom="12dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:theme="@style/LightInputTheme">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditTonnage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#212121" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Stockpile label -->
+    <TextView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Lokasi Stockpile"
+        android:textColor="#37474F"
+        android:textSize="12sp" android:textStyle="bold"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Stockpile spinner - putih dengan teks hitam -->
+    <Spinner android:id="@+id/spinnerEditStockpile"
+        android:layout_width="match_parent" android:layout_height="52dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/spinner_bg"
+        android:popupBackground="#FFFFFF" />
+
+    <!-- Remark toggle -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="Ada Remark?"
+            android:textColor="#37474F" android:textSize="14sp" android:textStyle="bold" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchEditRemark"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- Remark fields -->
+    <LinearLayout android:id="@+id/layoutEditRemark"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:visibility="gone"
+        android:background="#FFF8E1" android:padding="10dp">
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Detail Remark" android:textColor="#E65100"
+            android:textSize="12sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Tonnase Remark (Ton)" android:layout_marginBottom="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:theme="@style/LightInputTheme">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditRemarkTonnage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textColor="#212121" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Keterangan Remark"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:theme="@style/LightInputTheme">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditRemarkNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="2"
+                android:textColor="#212121" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+</LinearLayout>

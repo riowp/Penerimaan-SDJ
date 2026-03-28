@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:paddingBottom="90dp" android:clipToPadding="false">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp">
+
+            <!-- Header + User Info -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp" app:cardElevation="4dp" app:cardBackgroundColor="#1A237E">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="14dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="🚛 Penerimaan SDJ" android:textColor="#FFFFFF"
+                                android:textSize="18sp" android:textStyle="bold" />
+                            <TextView android:id="@+id/tvUserInfo" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:textColor="#FFE082"
+                                android:textSize="12sp" android:layout_marginTop="2dp" />
+                            <TextView android:id="@+id/tvSessionTimer" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:textColor="#B3E5FC"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnChangePassword"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginEnd="6dp"
+                            android:text="🔑 Sandi"
+                            android:textSize="11sp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:strokeColor="#FFE082"
+                            android:textColor="#FFE082" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnLogout" android:layout_width="wrap_content"
+                            android:layout_height="36dp" android:text="Logout"
+                            android:textSize="12sp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:strokeColor="#FFFFFF" android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <!-- Navigator Tanggal ◀ / ▶ -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnDatePrev"
+                            android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="◀" android:textSize="13sp"
+                            android:paddingHorizontal="0dp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:strokeColor="#B3E5FC" android:textColor="#B3E5FC"
+                            app:cornerRadius="8dp" />
+                        <TextView android:id="@+id/tvCurrentDate"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="#B3E5FC" android:textSize="12sp"
+                            android:gravity="center" android:textStyle="bold" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnDateNext"
+                            android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="▶" android:textSize="13sp"
+                            android:paddingHorizontal="0dp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:strokeColor="#B3E5FC" android:textColor="#B3E5FC"
+                            app:cornerRadius="8dp" />
+                    </LinearLayout>
+                    <TextView android:id="@+id/tvCurrentShift" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:textColor="#FFE082"
+                        android:textSize="13sp" android:textStyle="bold" android:layout_marginTop="2dp" />
+                    <!-- Label "Melihat data historis" jika bukan hari ini -->
+                    <TextView android:id="@+id/tvHistoricalLabel"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="📅 Menampilkan data historis"
+                        android:textColor="#FFCC80" android:textSize="11sp"
+                        android:layout_marginTop="2dp" android:visibility="gone" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Sync Status -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginBottom="10dp"
+                app:cardCornerRadius="8dp" app:cardElevation="2dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:padding="10dp" android:gravity="center_vertical">
+                    <TextView android:id="@+id/tvSyncStatus" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="⏳ Memeriksa..." android:textSize="12sp" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSync" android:layout_width="wrap_content"
+                        android:layout_height="36dp" android:text="☁ Sync" android:textSize="12sp"
+                        app:backgroundTint="#1565C0" app:cornerRadius="6dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Shift Stats -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginBottom="10dp">
+                <androidx.cardview.widget.CardView android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1"
+                    android:layout_marginEnd="5dp" app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp" app:cardBackgroundColor="@color/card_shift1">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="12dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="SHIFT 1" android:textColor="#1565C0" android:textSize="11sp" android:textStyle="bold" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="07:00 – 19:00" android:textColor="#5C6BC0" android:textSize="10sp" />
+                        <TextView android:id="@+id/tvShift1Count" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:text="0" android:textColor="#0D47A1"
+                            android:textSize="32sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="tiket" android:textColor="#5C6BC0" android:textSize="11sp" />
+                        <TextView android:id="@+id/tvShift1Tonnage" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:text="0.00 Ton"
+                            android:textColor="#1565C0" android:textSize="14sp" android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                        <!-- Stockpile breakdown shift 1 -->
+                        <View android:layout_width="match_parent" android:layout_height="1dp"
+                            android:background="#BBDEFB" android:layout_marginTop="6dp" android:layout_marginBottom="4dp"/>
+                        <TextView android:id="@+id/tvShift1Stockpile"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="" android:textColor="#5C6BC0" android:textSize="10sp"
+                            android:lineSpacingExtra="2dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1"
+                    android:layout_marginStart="5dp" app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp" app:cardBackgroundColor="@color/card_shift2">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="12dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="SHIFT 2" android:textColor="#E65100" android:textSize="11sp" android:textStyle="bold" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="19:00 – 07:00" android:textColor="#FF8F00" android:textSize="10sp" />
+                        <TextView android:id="@+id/tvShift2Count" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:text="0" android:textColor="#BF360C"
+                            android:textSize="32sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="tiket" android:textColor="#FF8F00" android:textSize="11sp" />
+                        <TextView android:id="@+id/tvShift2Tonnage" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:text="0.00 Ton"
+                            android:textColor="#E65100" android:textSize="14sp" android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                        <!-- Stockpile breakdown shift 2 -->
+                        <View android:layout_width="match_parent" android:layout_height="1dp"
+                            android:background="#FFE0B2" android:layout_marginTop="6dp" android:layout_marginBottom="4dp"/>
+                        <TextView android:id="@+id/tvShift2Stockpile"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="" android:textColor="#FF8F00" android:textSize="10sp"
+                            android:lineSpacingExtra="2dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Total -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginBottom="12dp"
+                app:cardCornerRadius="10dp" app:cardElevation="4dp" app:cardBackgroundColor="@color/total_card">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="TOTAL PENERIMAAN HARIAN" android:textColor="#A5D6A7"
+                                android:textSize="10sp" android:textStyle="bold" />
+                            <TextView android:id="@+id/tvTotalTonnage" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="0.00 Ton"
+                                android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" />
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:orientation="vertical" android:gravity="end">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="TOTAL TIKET" android:textColor="#A5D6A7"
+                                android:textSize="10sp" android:textStyle="bold" />
+                            <TextView android:id="@+id/tvTotalTickets" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="0"
+                                android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold"
+                                android:gravity="end" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!-- Stockpile breakdown total -->
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="#4CAF50" android:layout_marginTop="8dp" android:layout_marginBottom="6dp"/>
+                    <TextView android:id="@+id/tvTotalStockpile"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="" android:textColor="#A5D6A7" android:textSize="11sp"
+                        android:lineSpacingExtra="2dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Buttons -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:layout_marginBottom="8dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExport" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:layout_marginBottom="8dp"
+                    android:text="📊  Export Data ke CSV" android:textSize="14sp" android:textStyle="bold"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="#2E7D32" app:strokeWidth="2dp" android:textColor="#2E7D32" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnHistory" android:layout_width="0dp"
+                        android:layout_height="52dp" android:layout_weight="1"
+                        android:layout_marginEnd="6dp" android:text="📋  Riwayat" android:textSize="14sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        app:strokeColor="#1565C0" app:strokeWidth="2dp" android:textColor="#1565C0" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSummary" android:layout_width="0dp"
+                        android:layout_height="52dp" android:layout_weight="1"
+                        android:layout_marginStart="6dp" android:text="📈  Ringkasan" android:textSize="14sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        app:strokeColor="#6A1B9A" app:strokeWidth="2dp" android:textColor="#6A1B9A" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Kelola User (hanya admin) -->
+            <LinearLayout android:id="@+id/cardUserMgmt"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:visibility="gone">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUserMgmt" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:text="👥  Kelola User"
+                    android:textSize="14sp" android:textStyle="bold"
+                    app:backgroundTint="#4A148C" app:cornerRadius="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FAB SCAN -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnScan" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_gravity="bottom|end"
+        android:layout_margin="20dp" android:text="  SCAN" android:textSize="16sp"
+        android:textStyle="bold" android:textColor="#FFFFFF"
+        app:icon="@android:drawable/ic_menu_camera" app:iconTint="#FFFFFF"
+        app:backgroundTint="#1565C0" app:elevation="8dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

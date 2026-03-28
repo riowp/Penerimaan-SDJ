@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="?android:attr/windowBackground">
+
+    <!-- Filter Card — paksa background putih agar selalu terbaca di dark mode -->
+    <androidx.cardview.widget.CardView android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_margin="12dp"
+        app:cardCornerRadius="10dp" app:cardElevation="3dp"
+        app:cardBackgroundColor="#FFFFFF">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp"
+            android:background="#FFFFFF">
+
+            <!-- Fix 3: teks "Filter Data" pakai warna eksplisit agar tetap terbaca di dark mode -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Filter Data" android:textStyle="bold"
+                android:textColor="#1A237E" android:textSize="14sp" android:layout_marginBottom="10dp" />
+
+            <!-- Tanggal -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPickDate" android:layout_width="wrap_content"
+                    android:layout_height="40dp" android:text="📅 Tanggal" android:textSize="12sp"
+                    app:backgroundTint="#1565C0" app:cornerRadius="8dp" android:layout_marginEnd="10dp" />
+                <TextView android:id="@+id/tvSelectedDate" android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1"
+                    android:textColor="#1A237E" android:textSize="14sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Fix 4: tinggi spinner dari 48dp → wrap_content + minHeight + padding
+                 agar teks tidak terpotong di berbagai ukuran HP -->
+            <Spinner android:id="@+id/spinnerShift"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="52dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@drawable/spinner_bg"
+                android:popupBackground="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:theme="@style/LightInputTheme" />
+
+            <!-- Search No Tiket -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="🔍  Cari No. Tiket..."
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/LightInputTheme">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:inputType="text"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Sync info -->
+    <TextView android:id="@+id/tvSyncInfo"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp" android:paddingBottom="4dp"
+        android:textSize="12sp" android:textColor="#1565C0"
+        android:visibility="gone" />
+
+    <!-- Progress -->
+    <ProgressBar android:id="@+id/progressBar"
+        android:layout_width="match_parent" android:layout_height="4dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <!-- Summary bar -->
+    <androidx.cardview.widget.CardView android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="8dp" app:cardCornerRadius="8dp"
+        app:cardElevation="2dp" app:cardBackgroundColor="#1565C0">
+        <TextView android:id="@+id/tvSummary" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:padding="12dp"
+            android:text="Pilih tanggal" android:textColor="#FFFFFF"
+            android:textSize="14sp" android:textStyle="bold" android:gravity="center" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistory" android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1"
+        android:paddingHorizontal="12dp" android:clipToPadding="false" />
+
+</LinearLayout>

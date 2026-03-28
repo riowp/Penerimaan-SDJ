@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#F0F4F8">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddUser"
+        android:layout_width="match_parent" android:layout_height="52dp"
+        android:layout_margin="12dp" android:text="+ Tambah User Baru"
+        android:textSize="14sp" android:textStyle="bold"
+        app:backgroundTint="#1A237E" app:cornerRadius="10dp" />
+
+    <ProgressBar android:id="@+id/progressBar"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center" android:visibility="gone" />
+
+    <TextView android:id="@+id/tvEmpty"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Belum ada user" android:gravity="center"
+        android:textColor="#90A4AE" android:textSize="14sp"
+        android:padding="32dp" android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvUsers"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:paddingHorizontal="12dp"
+        android:clipToPadding="false" />
+</LinearLayout>
