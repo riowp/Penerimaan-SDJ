@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#1A237E"
+    android:padding="32dp">
+
+    <!-- Logo Adaro -->
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo_adaro"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PT MUSTIKA INDAH PERMAI"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Silakan login untuk melanjutkan"
+        android:textColor="#B3E5FC"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Login Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="24dp"
+            android:background="#FFFFFF">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Username" android:layout_marginBottom="16dp"
+                app:startIconDrawable="@android:drawable/ic_menu_myplaces"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/LightInputTheme">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:inputType="text"
+                    android:textColor="#212121"
+                    android:imeOptions="actionNext" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Password" android:layout_marginBottom="8dp"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@android:drawable/ic_lock_lock"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/LightInputTheme">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword" android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="#212121"
+                    android:imeOptions="actionDone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Error message -->
+            <TextView android:id="@+id/tvError"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textColor="#C62828" android:textSize="13sp"
+                android:gravity="center" android:layout_marginBottom="8dp"
+                android:visibility="gone" />
+
+            <!-- Loading -->
+            <TextView android:id="@+id/tvLoading"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="⏳ Memverifikasi..." android:textColor="#1565C0"
+                android:textSize="13sp" android:gravity="center"
+                android:layout_marginBottom="8dp" android:visibility="gone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin" android:layout_width="match_parent"
+                android:layout_height="56dp" android:text="MASUK"
+                android:textSize="16sp" android:textStyle="bold"
+                app:backgroundTint="#1A237E" app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="24dp" android:text="Hubungi admin jika lupa password"
+        android:textColor="#7986CB" android:textSize="12sp" />
+
+    <!-- Banner status offline — muncul otomatis jika tidak ada internet -->
+    <TextView android:id="@+id/tvOfflineInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:textSize="12sp"
+        android:lineSpacingExtra="4dp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>

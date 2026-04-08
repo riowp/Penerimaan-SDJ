@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <!-- Camera Preview -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <androidx.camera.view.PreviewView android:id="@+id/previewView"
+            android:layout_width="match_parent" android:layout_height="match_parent" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+            android:orientation="vertical" android:gravity="center">
+            <View android:layout_width="240dp" android:layout_height="240dp"
+                android:background="@drawable/scan_frame" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:text="Arahkan kamera ke barcode"
+                android:textColor="#FFFFFF" android:textSize="13sp"
+                android:background="#88000000" android:padding="8dp" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="#AA1A237E" android:padding="10dp">
+            <TextView android:id="@+id/tvOperationalDate" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#B3E5FC" android:textSize="12sp" />
+            <TextView android:id="@+id/tvCurrentShift" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textColor="#FFE082"
+                android:textSize="13sp" android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Bottom panel - putih agar input selalu terang -->
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="#F8F9FA">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="14dp">
+
+            <!-- Status -->
+            <TextView android:id="@+id/tvScanStatus"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Menunggu scan..." android:textColor="#FFFFFF"
+                android:textSize="13sp" android:gravity="center" android:padding="8dp"
+                android:background="#37474F" android:layout_marginBottom="10dp" />
+
+            <!-- Toggle Input Manual (Admin & Operator) -->
+            <LinearLayout android:id="@+id/layoutManualToggle"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:background="#E3F2FD" android:padding="10dp"
+                android:layout_marginBottom="10dp" android:visibility="gone">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/tvManualToggleLabel"
+                    android:text="✏ Input Manual"
+                    android:textColor="#1565C0" android:textSize="13sp" android:textStyle="bold" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchManualInput"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Date Picker + Shift Picker (manual mode) -->
+            <LinearLayout android:id="@+id/layoutDatePicker"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone"
+                android:layout_marginBottom="8dp">
+
+                <!-- Tanggal Operasional -->
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Tanggal Operasional"
+                    android:textColor="#1565C0" android:textSize="11sp" android:textStyle="bold"
+                    android:layout_marginBottom="4dp" android:paddingStart="4dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxStrokeColor="#1565C0"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@android:drawable/ic_menu_my_calendar"
+                    android:theme="@style/LightInputTheme">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etManualDate"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:hint="Pilih tanggal operasional"
+                        android:focusable="false" android:focusableInTouchMode="false"
+                        android:cursorVisible="false" android:clickable="true"
+                        android:textColor="#212121"
+                        android:backgroundTint="@android:color/transparent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Shift Manual -->
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Shift Operasional"
+                    android:textColor="#1565C0" android:textSize="11sp" android:textStyle="bold"
+                    android:layout_marginBottom="4dp" android:paddingStart="4dp" />
+                <Spinner android:id="@+id/spinnerManualShift"
+                    android:layout_width="match_parent" android:layout_height="52dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/spinner_bg" />
+
+            </LinearLayout>
+
+            <!-- No Tiket -->
+            <TextView
+                android:id="@+id/tvTicketLabel"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="No. Tiket (dari Barcode)"
+                android:textColor="#1565C0" android:textSize="11sp" android:textStyle="bold"
+                android:layout_marginTop="4dp" android:layout_marginBottom="4dp"
+                android:paddingStart="4dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="#1565C0"
+                android:theme="@style/LightInputTheme">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTicketNumber" android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Menunggu scan barcode..."
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:cursorVisible="false"
+                    android:textColor="#212121"
+                    android:backgroundTint="@android:color/transparent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Tonnage Net label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tonnage Net (Ton)"
+                android:textColor="#1565C0"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:paddingStart="4dp" />
+
+            <!-- Tonnase -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Masukkan Tonnage Net" android:layout_marginBottom="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="#1565C0"
+                android:theme="@style/LightInputTheme">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTonnage" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:inputType="numberDecimal"
+                    android:textColor="#212121" android:backgroundTint="@android:color/transparent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Stockpile -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Lokasi Stockpile" android:textColor="#37474F"
+                android:textSize="12sp" android:textStyle="bold" android:layout_marginBottom="4dp" />
+            <Spinner android:id="@+id/spinnerStockpile"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/spinner_bg" />
+
+            <!-- Remark toggle -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="Remark?"
+                    android:textColor="#37474F" android:textSize="14sp" android:textStyle="bold" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchRemark"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Remark fields -->
+            <LinearLayout android:id="@+id/layoutRemark"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone"
+                android:background="#FFF8E1" android:padding="10dp"
+                android:layout_marginBottom="8dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Detail Remark" android:textColor="#E65100"
+                    android:textSize="12sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Tonnase Remark (Ton)" android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:theme="@style/LightInputTheme">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRemarkTonnage" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="numberDecimal"
+                        android:textColor="#212121" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Keterangan Remark"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:theme="@style/LightInputTheme">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRemarkNote" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="textMultiLine"
+                        android:minLines="2" android:textColor="#212121" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveManual" android:layout_width="match_parent"
+                android:layout_height="52dp" android:text="SIMPAN DATA"
+                android:textSize="15sp" android:textStyle="bold"
+                app:backgroundTint="#2E7D32" app:cornerRadius="8dp" />
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" android:text="Format barcode: NOTIKET|TONNASE"
+                android:textColor="#90A4AE" android:textSize="11sp" android:gravity="center" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
